@@ -9,11 +9,7 @@ import requests
 
 
 def return_snowflake_conn():
-
-    # Initialize the SnowflakeHook
     hook = SnowflakeHook(snowflake_conn_id='snowflake_conn')
-    
-    # Execute the query and fetch results
     conn = hook.get_conn()
     return conn.cursor()
 
@@ -54,7 +50,6 @@ def predict(cur, forecast_function_name, train_input_table, forecast_table, fina
      - Union your predictions with your historical data, then create the final table
     """
     make_prediction_sql = f"""BEGIN
-        -- This is the step that creates your predictions.
         CALL {forecast_function_name}!FORECAST(
             FORECASTING_PERIODS => 7,
             -- Here we set your prediction interval.
