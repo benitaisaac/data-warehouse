@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw
+    database: USER_DB_COBRA
+    schema: raw
+    description: "Schema which stores raw tables (ETL)"
+    tables:
+      - name: user_session_channel
+        identifier: user_session_channel
+      - name: session_timestamp
+        identifier: session_timestamp
+
+  - name: analytics
+    database: USER_DB_COBRA
+    schema: analytics
+    description: "Schema which stores analytics tables (ELT)"
+    tables:
+      - name: session_summary
+        identifier: session_summary
